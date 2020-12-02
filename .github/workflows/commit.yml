@@ -9,7 +9,6 @@ jobs:
         uses: actions/checkout@v2-beta # use either @v2-beta or @master. Eventually there will be a @v2 tag.
       - name: save current date
         run: |
-          git checkout master
           # do some operation that changes a file in the git repo
           date > time.txt
       - name: setup git config
@@ -20,6 +19,9 @@ jobs:
       - name: commit
         run: |
           # Stage the file, commit and push
+          git status
+          git checkout master
+          git status
           git add time.txt
           git commit -m "new date commit"
           git push origin master
