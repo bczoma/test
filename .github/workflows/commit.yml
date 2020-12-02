@@ -10,7 +10,8 @@ jobs:
       - name: save current date
         run: |
           # do some operation that changes a file in the git repo
-          date > time.txt
+          git clone --quiet --branch=master https://github.com/bczoma/test.git
+          date > test/time.txt
       - name: setup git config
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
@@ -19,9 +20,9 @@ jobs:
       - name: commit
         run: |
           # Stage the file, commit and push
-          git status
-          git checkout master
+          pushd test
           git status
           git add time.txt
           git commit -m "new date commit"
           git push origin master
+          popd
