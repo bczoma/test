@@ -6,11 +6,12 @@ jobs:
     steps:
       # Checkout the branch
       - name: checkout
-        uses: actions/checkout@v2-beta # use either @v2-beta or @master. Eventually there will be a @v2 tag.
+        - uses: actions/checkout@v2
+          with:
+            ref: master
+        
       - name: save current date
         run: |
-          # do some operation that changes a file in the git repo
-          git clone --quiet --branch=master https://github.com/bczoma/test.git
           date > test/time.txt
       - name: setup git config
         run: |
@@ -20,9 +21,6 @@ jobs:
       - name: commit
         run: |
           # Stage the file, commit and push
-          pushd test
-          git status
           git add time.txt
           git commit -m "new date commit"
           git push origin master
-          popd
