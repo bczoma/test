@@ -6,9 +6,9 @@ jobs:
     steps:
       # Checkout the branch
       - name: checkout
-        - uses: actions/checkout@v2
-          with:
-            ref: master
+        uses: actions/checkout@v2
+        with:
+          ref: master
         
       - name: save current date
         run: |
