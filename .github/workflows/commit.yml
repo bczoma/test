@@ -12,7 +12,7 @@ jobs:
         
       - name: save current date
         run: |
-          date > test/time.txt
+          date > time.txt
       - name: setup git config
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
