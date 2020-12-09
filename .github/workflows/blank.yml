@@ -9,9 +9,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: First step
+      run: |
+        echo FIRST OK
     - name: Try to fail
-      run: exit 1
-    - name: Print message
-      if: ${{ failure() }}
-      run: echo FAILED!
+      run: |
+        echo YES
+        echo YES
+        echo NOW FAILING
+        exit 1
+    - name: Next step
+      run: |
+        echo NEXT STEP AFTER FAIL
+    - name: Cleanup
+      if: ${{ always() }}
+      run: echo RUNNING CLEANUP!
 
